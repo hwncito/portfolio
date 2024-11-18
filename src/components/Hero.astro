@@ -1,0 +1,86 @@
+---
+import Words from '../svgs/Words.astro';
+import Code from '../svgs/Code.astro';
+import Github from '../svgs/Github.astro';
+import LinkedIn from '../svgs/LinkedIn.astro';
+---
+<main
+  class="relative flex items-center justify-between h-screen overflow-hidden"
+>
+  <div id="hero-text">
+    <div class="overflow-hidden">
+      <h1 id="hero-title" class="text-7xl text-semibold">Hello, I'm Juan</h1>
+    </div>
+    <h2 id="hero-description" class="text-left text-5xl h-[48px] mt-6"></h2>
+    <p id="hero-paragraph" class="mt-4 text-2xl opacity-90 text-balance">
+      I make websites look cool and perform. Let's <br /> connect and work together.
+    </p>
+    <div id="hero-links" class="flex gap-4 mt-4">
+      <a
+        class="cursor-pointer"
+        target="_blank"
+        href="https://github.com/hwncito"
+      >
+        <Github
+          class="h-9 w-9 hover:scale-105 transition-transform duration-300"
+        />
+      </a>
+      <a
+        class="cursor-pointer"
+        target="_blank"
+        href="https://www.linkedin.com/in/juan-marcos-speroni/"
+      >
+        <LinkedIn
+          class="h-9 w-9 hover:scale-105 transition-transform duration-300"
+        />
+      </a>
+    </div>
+  </div>
+  <div id="words-container" class="absolute -right-96 -top-32">
+    <Words />
+  </div>
+  <div id="code-icon" class="absolute right-24 -translate-y-10">
+    <Code class="h-[180px] w-[180px]" />
+  </div>
+</main>
+
+<style>
+  #hero-text {
+    margin-left: 5%;
+  }
+</style>
+
+<script>
+  import { gsap } from 'gsap';
+  import TextPlugin from 'gsap/TextPlugin';
+
+  gsap.registerPlugin(TextPlugin);
+
+  const title = document.querySelector('#hero-title');
+  const description = document.querySelector('#hero-description');
+  const paragraph = document.querySelector('#hero-paragraph');
+  const heroLinks = document.querySelector('#hero-links');
+  const wordsContainer = document.querySelector('#words-container');
+  const codeIcon = document.querySelector('#code-icon');
+
+  const tl = gsap.timeline({
+    defaults: { duration: 1, ease: 'power1.out' },
+  });
+
+  gsap.to(wordsContainer, {
+    rotate: 360,
+    repeat: -1,
+    duration: 20,
+    ease: 'none',
+  });
+
+  tl.from(title, { yPercent: 100 })
+    .to(description, {
+      text: 'Your creative Frontend Developer.',
+      duration: 2,
+    })
+    .from(paragraph, { opacity: 0 })
+    .from(heroLinks, { opacity: 0 }, '<')
+    .from(wordsContainer, { opacity: 0 }, '<')
+    .from(codeIcon, { opacity: 0 }, '<');
+</script>

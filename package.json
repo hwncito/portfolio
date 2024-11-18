@@ -10,8 +10,13 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.16.13",
     "@astrojs/check": "^0.9.4",
+    "@astrojs/tailwind": "^5.1.2",
+    "@fontsource-variable/sora": "^5.1.0",
+    "astro": "^4.16.13",
+    "gsap": "^3.12.5",
+    "gsap-trial": "^3.12.5",
+    "tailwindcss": "^3.4.15",
     "typescript": "^5.6.3"
   }
 }
